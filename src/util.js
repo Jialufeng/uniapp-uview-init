@@ -1,18 +1,18 @@
 /*
  * @Author: lufeng
  * @Date: 2021-11-01 16:27:58
- * @LastEditTime: 2021-11-02 11:06:26
+ * @LastEditTime: 2021-11-09 22:18:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /super-butler/src/util.js
  */
 
 // 开发
-const serverUrl = process.env.NODE_ENV === 'development' ? 'xxx' : "https://xx";
+const serverUrl = process.env.NODE_ENV === 'development' ? 'https://wc.tigerlife.cn/' : "https://wc.tigerlife.cn/";
 
 
 const url = {
-    login: 'login/123',
+    banner: 'app/home/bannerList'
 }
 
 /**
@@ -30,9 +30,13 @@ const getRequest = (url, method, data) => {
                 'Content-Type': 'application/json',
             },
             success: (res) => {
+            
                 console.log(res.data);
                 resolve(res.data)
             },
+            fail(err) {
+                console.log(err)
+            }
         });
     });
 };
