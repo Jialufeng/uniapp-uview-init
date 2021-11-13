@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-01 17:52:29
- * @LastEditTime: 2021-11-13 16:49:04
+ * @LastEditTime: 2021-11-13 16:52:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /butler-super/src/pages/index/index.vue
@@ -36,6 +36,7 @@
                 <view class="tabs">
                     <u-tabs :active-item-style="styleCustom"  active-color="#0A0F2D" inactive-color="#5e5e61" :list="listTabs" :is-scroll="true" :current="current" @change="change"></u-tabs>
                 </view>
+                <!-- 先用后买 -->
                 <view v-if="current == 0">
                     <view class="first-box u-border-bottom">
                         <view class="u-flex u-row-between">
