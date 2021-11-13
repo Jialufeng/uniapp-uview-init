@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-01 17:52:29
- * @LastEditTime: 2021-11-12 23:18:36
+ * @LastEditTime: 2021-11-13 14:35:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /butler-super/src/pages/index/index.vue
@@ -17,14 +17,14 @@
                 <u-swiper :list="list"></u-swiper>
             </view>
             <view class="brand-list u-flex">
-                <view class="u-flex-1" v-for="(item, index) in brand" :key="index">
+                <view @click="handleSearch(item)" class="u-flex-1" v-for="(item, index) in brand" :key="index">
                     <u-image class="brand-img" :src="item.img" width="72rpx" height="72rpx"></u-image>
                     <view class="brand">{{ item.name }}</view>
                 </view>
             </view>
             <view class="type-list">
                 <u-row gutter="16">
-                    <u-col span="3" v-for="(item, index) in type" :key="index">
+                    <u-col span="3" @click="handleSearch(item)" v-for="(item, index) in type" :key="index">
                         <view class="item">{{ item.name }}</view>
                     </u-col>
                 </u-row>
@@ -102,6 +102,9 @@ export default {
                 cityId: 1,
             });
             console.log(data);
+        },
+        handleSearch(item) {
+            this.$router.push('/pages/selection/search/menu')
         },
         change(index) {
             this.current = index;

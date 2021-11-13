@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-12 23:29:22
- * @LastEditTime: 2021-11-13 02:42:43
+ * @LastEditTime: 2021-11-13 16:00:04
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /fe-wc/src/pages/index/search/index.vue
@@ -9,30 +9,35 @@
 
 <template>
     <view class="content">
+        
         <view>
+            <view>111</view>
             <view class="u-menu-wrap">
                 <scroll-view scroll-y scroll-with-animation class="u-tab-view menu-scroll-view" :scroll-top="scrollTop">
-                    <view v-for="(item,index) in tabbar" :key="index" class="u-tab-item" :class="[current==index ? 'u-tab-item-active' : '']" :data-current="index" @tap.stop="swichMenu(index)">
+                    <view v-for="(item,index) in menu" :key="index" class="u-tab-item" :class="[current==index ? 'u-tab-item-active' : '']" :data-current="index" @tap.stop="swichMenu(index)">
                         <text class="u-line-1">{{item.name}}</text>
                     </view>
                 </scroll-view>
-                <block v-for="(item,index) in tabbar" :key="index">
-                    <scroll-view scroll-y class="right-box" v-if="current==index">
-                        <view class="page-view">
-                            <view class="class-item">
-                                <view class="item-title">
-                                    <text>{{item.name}}</text>
-                                </view>
-                                <view class="item-container">
-                                    <view class="thumb-box" v-for="(item1, index1) in item.foods" :key="index1">
-                                        <image class="item-menu-image" :src="item1.icon" mode=""></image>
-                                        <view class="item-menu-name">{{item1.name}}</view>
+                <view class="right">
+                    <!-- <block > -->
+                        <scroll-view scroll-y :scroll-with-animation="true" class="right-box"  :scroll-into-view="target" >
+                            <view  class="page-view" v-for="(item,index) in menu" :key="index" >
+                                <view class="class-item" :id="'item-' + index">
+                                    <view class="item-title">
+                                        <text>{{item.name}}</text>
+                                    </view>
+                                    <view class="item-container">
+                                        <u-row gutter="16">
+                                            <u-col span="4"  v-for="(items, i) in item.foods" :key="i">
+                                                <view class="thumb-box" >{{items.tagName}}</view>
+                                            </u-col>
+                                        </u-row>
                                     </view>
                                 </view>
                             </view>
-                        </view>
-                    </scroll-view>
-                </block>
+                        </scroll-view>
+                    <!-- </block> -->
+                </view>
             </view>
         </view>
     </view>
@@ -42,6 +47,19 @@
 export default {
     data() {
         return {
+            target: '',
+            menu: [
+                { name: "品牌", id: 0 },
+                { name: "车型", id: 0 },
+                { name: "价格", id: 0 },
+                { name: "车龄", id: 0 },
+                { name: "能源", id: 0 },
+                { name: "驱动", id: 0 },
+                { name: "排量", id: 0 },
+                { name: "马力", id: 0 },
+                { name: "结构", id: 0 },
+            ],
+            foods: {},
             tabbar: [
                 {
                     name: "品牌",
@@ -101,19 +119,37 @@ export default {
                     ],
                 },
             ],
-            scrollTop: 0, //tab标题的滚动条位置
+            scrollTop: 100, //tab标题的滚动条位置
             current: 0, // 预设当前项的值
             menuHeight: 0, // 左边菜单的高度
             menuItemHeight: 0, // 左边菜单item的高度
         };
     },
-    onLoad() {},
+    onLoad() {
+        this.init();
+    },
     methods: {
+        async init() {
+            const data = await this.$getRequest( this.$url.getCarTypeCondition, "POST",{});
+            this.foods = data.data;
+            this.menu[1].foods = data.data.mold;
+            this.menu[2].foods = data.data.guidancePrice;
+            this.menu[4].foods = data.data.powerMode;
+            this.menu[5].foods = data.data.drive;
+            this.menu[6].foods = data.data.dischargeRange;
+            this.menu[7].foods = data.data.horsepower;
+            this.menu[8].foods = data.data.structure;
+            
+            
+            console.log(data);
+        },
         getImg() {
             return Math.floor(Math.random() * 35);
         },
         // 点击左边的栏目切换
         async swichMenu(index) {
+            this.target = `item-${index}`;
+            console.log( this.target);
             if (index == this.current) return;
             this.current = index;
             // 如果为0，意味着尚未初始化
@@ -152,6 +188,7 @@ export default {
 
 <style lang="scss" scoped>
 .content {
+    padding: 0;
     .u-wrap {
         height: calc(100vh);
         /* #ifdef H5 */
@@ -160,15 +197,39 @@ export default {
         display: flex;
         flex-direction: column;
     }
+    .page-view {
+        .thumb-box {
+            background: rgba(10, 15, 45, 0.04);
+            font-size: 24rpx;
+            text-align: center;
+            color: rgba(10, 15, 45, 0.8);
+            padding: 16rpx 0;
+            margin: 10rpx 0;
+            border-radius: 8rpx;
+        }
+    }
 
     .u-search-box {
         padding: 18rpx 30rpx;
     }
 
     .u-menu-wrap {
+        position: relative;
         flex: 1;
         display: flex;
         overflow: hidden;
+        .right {
+            width: 100%;
+            .right-box {
+                width: 100%; 
+                overflow: hidden; 
+                white-space: nowrap;
+                height: 100%;
+                position: absolute;
+                left: 160rpx;
+                top: 0;
+            }
+        }
     }
 
     .u-search-inner {
@@ -197,39 +258,35 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 26rpx;
-        color: #444;
-        font-weight: 400;
+        font-size: 28rpx;
+        color: #64696F;
+        font-weight: 500;
         line-height: 1;
     }
 
     .u-tab-item-active {
         position: relative;
-        color: #000;
-        font-size: 30rpx;
-        font-weight: 600;
+        color: #0A0F2D;
+        font-size: 34rpx;
+        font-weight: 500;
         background: #fff;
     }
 
     .u-tab-item-active::before {
         content: "";
         position: absolute;
-        border-left: 4px solid $u-type-primary;
-        height: 32rpx;
+        border-left: 4px solid $uni-color-success;
+        height: 100%;
         left: 0;
-        top: 39rpx;
+        top: 0;
+        border-radius: 0 10rpx 10rpx 0;
     }
 
     .u-tab-view {
         height: 100%;
     }
-
-    .right-box {
-        background-color: rgb(250, 250, 250);
-    }
-
-    .page-view {
-        padding: 16rpx;
+    .item-container {
+        padding-right: 160rpx;
     }
 
     .class-item {
@@ -240,34 +297,10 @@ export default {
     }
 
     .item-title {
-        font-size: 26rpx;
+        font-size: 30rpx;
         color: $u-main-color;
         font-weight: bold;
-    }
-
-    .item-menu-name {
-        font-weight: normal;
-        font-size: 24rpx;
-        color: $u-main-color;
-    }
-
-    .item-container {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .thumb-box {
-        width: 33.333333%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        margin-top: 20rpx;
-    }
-
-    .item-menu-image {
-        width: 120rpx;
-        height: 120rpx;
+        margin-bottom: 24rpx;
     }
 }
 </style>

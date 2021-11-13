@@ -1,7 +1,7 @@
 /*
  * @Author: lufeng
  * @Date: 2021-11-01 16:27:58
- * @LastEditTime: 2021-11-09 22:18:23
+ * @LastEditTime: 2021-11-13 14:44:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /super-butler/src/util.js
@@ -12,7 +12,8 @@ const serverUrl = process.env.NODE_ENV === 'development' ? 'https://wc.tigerlife
 
 
 const url = {
-    banner: 'app/home/bannerList'
+    banner: 'app/home/bannerList', //banner 列表
+    getCarTypeCondition: 'app/car/getCarTypeCondition',  // 筛选列表
 }
 
 /**

@@ -19,7 +19,7 @@
 			}
 		},
 		{
-			"path": "pages/selection/search/index",
+			"path": "pages/selection/search/menu",
 			"style": {
 				"navigationBarTitleText": "条件选车"
 			}
@@ -59,7 +59,7 @@
 			},
 			{
 				"name": "筛选", 
-				"path": "pages/selection/search/index",
+				"path": "pages/selection/search/menu",
 				"query": "" 
 			}
 		]
