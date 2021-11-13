@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-12 23:29:22
- * @LastEditTime: 2021-11-13 16:00:04
+ * @LastEditTime: 2021-11-13 16:16:58
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /fe-wc/src/pages/index/search/index.vue
@@ -11,7 +11,17 @@
     <view class="content">
         
         <view>
-            <view>111</view>
+            <view class="scroll-box">
+                <scroll-view scroll-x class="tag-box" >
+                    <u-tag text="试试" class="item" mode="dark" bg-color="#fff" color="#0A0F2D"  closeable  @close="tagClick"/>
+                    <u-tag text="试试" class="item" mode="dark" bg-color="#fff" color="#0A0F2D"  closeable  @close="tagClick"/>
+                    <u-tag text="试试" class="item" mode="dark" bg-color="#fff" color="#0A0F2D"  closeable  @close="tagClick"/>
+                    <u-tag text="试试" class="item" mode="dark" bg-color="#fff" color="#0A0F2D"  closeable  @close="tagClick"/>
+                    <u-tag text="试试" class="item" mode="dark" bg-color="#fff" color="#0A0F2D"  closeable  @close="tagClick"/>
+                </scroll-view>
+                <view class="reset">重置</view>
+                
+            </view>
             <view class="u-menu-wrap">
                 <scroll-view scroll-y scroll-with-animation class="u-tab-view menu-scroll-view" :scroll-top="scrollTop">
                     <view v-for="(item,index) in menu" :key="index" class="u-tab-item" :class="[current==index ? 'u-tab-item-active' : '']" :data-current="index" @tap.stop="swichMenu(index)">
@@ -143,9 +153,6 @@ export default {
             
             console.log(data);
         },
-        getImg() {
-            return Math.floor(Math.random() * 35);
-        },
         // 点击左边的栏目切换
         async swichMenu(index) {
             this.target = `item-${index}`;
@@ -189,6 +196,30 @@ export default {
 <style lang="scss" scoped>
 .content {
     padding: 0;
+    .scroll-box {
+        position: relative;
+        padding: 24rpx 32rpx;
+        padding-right: 100rpx;
+        background: rgba(10, 15, 45, 0.04);
+
+        .tag-box {
+            width: 100%;
+            overflow: hidden; 
+            white-space: nowrap;
+            .item {
+                margin: 0 6rpx;
+            }
+        }
+        .reset {
+            position: absolute;
+            right: 20rpx;
+            top: 30rpx;
+            z-index: 2;
+            font-size: 24rpx;
+            color: rgba(10, 15, 45, 0.8);
+        }
+    }
+    
     .u-wrap {
         height: calc(100vh);
         /* #ifdef H5 */
