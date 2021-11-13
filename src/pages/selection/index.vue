@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-01 17:52:29
- * @LastEditTime: 2021-11-13 14:35:17
+ * @LastEditTime: 2021-11-13 16:43:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /butler-super/src/pages/index/index.vue
@@ -37,7 +37,34 @@
                     <u-tabs :active-item-style="styleCustom"  active-color="#0A0F2D" inactive-color="#5e5e61" :list="listTabs" :is-scroll="true" :current="current" @change="change"></u-tabs>
                 </view>
                 <view v-if="current == 0">
-                    先用后买
+                    <view class="first-box u-border-bottom">
+                        <view class="u-flex u-row-between">
+                            <view class="brand">奥迪 A6L 2021款｜臻选致雅 45TFSI</view>
+                            <view class="price"><text>9,000</text>/月</view>
+                        </view>
+                        <view class="first-box-info">
+                            <view class="box-info-text">厂商指导价：xx万</view>
+                            <view class="box-info-text">最短合约期：：xx万</view>
+                            <view class="box-info-text">新旧程度：：xx万</view>
+                            <view class="car-img">
+                                <u-image width="100%"  height="100%" src="/static/2222.png"></u-image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="first-box u-border-bottom">
+                        <view class="u-flex u-row-between">
+                            <view class="brand">奥迪 A6L 2021款｜臻选致雅 45TFSI</view>
+                            <view class="price"><text>9,000</text>/月</view>
+                        </view>
+                        <view class="first-box-info">
+                            <view class="box-info-text">厂商指导价：xx万</view>
+                            <view class="box-info-text">最短合约期：：xx万</view>
+                            <view class="box-info-text">新旧程度：：xx万</view>
+                            <view class="car-img">
+                                <u-image width="100%"  height="100%" src="/static/2222.png"></u-image>
+                            </view>
+                        </view>
+                    </view>
                 </view>
                 <view v-if="current == 1">
                     一层首付
@@ -154,6 +181,37 @@ $double: 2;
         }
         .collage {
             margin-top: 64rpx;
+        }
+    }
+    .first-box {
+        padding: 30rpx 8rpx;
+        .first-box-info {
+            position: relative;
+            margin-top: 40rpx;
+            .box-info-text {
+                color: #64696F;
+                font-size: 24rpx;
+                margin: 4rpx 0;
+            }
+            .car-img {
+                position: absolute;
+                right: 0;
+                bottom: -30rpx;
+                width: 175rpx * $double;
+                height: 160rpx;
+            }
+        }
+        .brand {
+            font-size: 28rpx;
+            color: rgba(10, 15, 45, 0.8);
+        }
+        .price {
+            color: #F51A4E;
+            font-size: 24rpx;
+            font-weight: 500;
+            text {
+                font-size: 34rpx;
+            }
         }
     }
 }
