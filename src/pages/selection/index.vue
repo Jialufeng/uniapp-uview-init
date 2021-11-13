@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-01 17:52:29
- * @LastEditTime: 2021-11-13 16:43:01
+ * @LastEditTime: 2021-11-13 16:49:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /butler-super/src/pages/index/index.vue
@@ -141,7 +141,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$double: 2;
 .content {
     .index {
         .logo {
