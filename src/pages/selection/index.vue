@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-01 17:52:29
- * @LastEditTime: 2021-11-12 22:28:48
+ * @LastEditTime: 2021-11-12 23:18:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /butler-super/src/pages/index/index.vue
@@ -34,7 +34,22 @@
             </view>
             <view class="tabs-swiper">
                 <view class="tabs">
-                    <u-tabs :list="listTabs" :is-scroll="false" :current="current" @change="change"></u-tabs>
+                    <u-tabs :active-item-style="styleCustom"  active-color="#0A0F2D" inactive-color="#5e5e61" :list="listTabs" :is-scroll="true" :current="current" @change="change"></u-tabs>
+                </view>
+                <view v-if="current == 0">
+                    先用后买
+                </view>
+                <view v-if="current == 1">
+                    一层首付
+                </view>
+                <view v-if="current == 2">
+                    平价租车
+                </view>
+                <view v-if="current == 3">
+                    折扣新车
+                </view>
+                <view v-if="current == 4">
+                    认证好车
                 </view>
             </view>
         </view>
@@ -46,6 +61,8 @@ const app = getApp();
 export default {
     data() {
         return {
+            styleCustom: {
+            },
             listTabs: [
                 { name: "先用后买" },
                 { name: "一层首付" },
@@ -86,8 +103,8 @@ export default {
             });
             console.log(data);
         },
-        change(e) {
-            console.log(e);
+        change(index) {
+            this.current = index;
         }
     },
 };

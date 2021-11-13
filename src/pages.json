@@ -5,10 +5,23 @@
 
 	"pages": [ 
 		{
-			"path": "pages/index/index",
+			"path": "pages/selection/index",
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/selection/search/index",
+			"style": {
+				"navigationBarTitleText": "条件选车"
 			}
 		},
 		{
@@ -31,7 +44,22 @@
 		"list": [
 			{
 				"name": "首页", 
-				"path": "pages/index/index",
+				"path": "pages/selection/index",
+				"query": "" 
+			},
+			{
+				"name": "登陆", 
+				"path": "pages/login",
+				"query": "" 
+			},
+			{
+				"name": "详情", 
+				"path": "pages/profile/index",
+				"query": "" 
+			},
+			{
+				"name": "筛选", 
+				"path": "pages/selection/search/index",
 				"query": "" 
 			}
 		]
