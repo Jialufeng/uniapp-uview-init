@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-12 23:21:25
- * @LastEditTime: 2021-11-13 19:37:50
+ * @LastEditTime: 2021-11-14 10:26:50
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /fe-wc/src/pages/profile/index.vue
@@ -15,9 +15,17 @@
                 <view class="nav-custom  u-flex">
                     <image class="logo" src="/static/logo.svg"></image>
                 </view>
-                <view class="car-info u-flex">
-                    <view class="brand"><text class="brand-t">奥迪 A6L</text><text></text></view>
-                    <view></view>
+                <view class="car-info u-flex u-row-between">
+                    <view class="brand">
+                        <text class="brand-t">奥迪 A6L</text>
+                        <view class="brand-price">
+                            指导价 44.38万
+                        </view>
+                    </view>
+                    <view class="car-info-icon">
+                        <u-image class="icon" width="32rpx" height="28rpx" src="/static/icon1.png"></u-image>
+                        <u-image class="icon" width="28rpx" height="28rpx" src="/static/icon2.png"></u-image>
+                    </view>
                 </view>
                 <view>
                     <u-image width="100%" height="300rpx" src="/static/1111.png"></u-image>
@@ -39,43 +47,77 @@
                     <u-tabs :active-item-style="styleCustom"  active-color="#0A0F2D" inactive-color="#5e5e61" :list="listTabs" :is-scroll="true" :current="current" @change="changeTab"></u-tabs>
                 </view>
                 <view class="car-mode">
-                    <view class="card">
-                        <view class="car-mode-info u-border-bottom">
-                            
-                            <u-image class="car-brand-logo" width="88rpx" height="88rpx"  src="/static/brand.png"></u-image>
-                            <view class="mode-info-head">
-                                <view class="u-flex u-row-between">
-                                    <view class="mode-info-brand u-flex-2">奔驰 AMG 2021款 45TFSI 臻选致雅</view>
-                                    <view class="u-flex-2 price-base u-text-right"><text>9,900</text>/月</view>
+                    <template v-if="current == 0">
+                        <view class="card">
+                            <view class="car-mode-info u-border-bottom">
+                                <u-image class="car-brand-logo" width="88rpx" height="88rpx"  src="/static/brand.png"></u-image>
+                                <view class="mode-info-head">
+                                    <view class="u-flex u-row-between">
+                                        <view class="mode-info-brand u-flex-2">奔驰 AMG 2021款 45TFSI 臻选致雅</view>
+                                        <view class="u-flex-2 price-base u-text-right"><text>9,900</text>/月</view>
+                                    </view>
+                                    <view class="mode-info-p u-flex">
+                                        <view class="u-flex-1 divider-x">
+                                            <view>44.38万</view>
+                                            <view>指导价</view>
+                                        </view>
+                                        <view class="u-flex-1 divider-x">
+                                            <view>3.38万</view>
+                                            <view>购置税</view>
+                                        </view>
+                                        <view class="u-flex-1 divider-x">
+                                            <view>6个月</view>
+                                            <view>最小合约期</view>
+                                        </view>
+                                    </view>
                                 </view>
-                                <view class="mode-info-p u-flex">
-                                    <view class="u-flex-1 divider-x">
-                                        <view>44.38万</view>
-                                        <view>指导价</view>
+                            </view>
+                            <view class="car-des">
+                                <view class="car-des-t">交车周期：<text>全新车交车周期预计30天内</text></view>
+                                <view class="car-des-t">付款方式：<text>111</text></view>
+                                <view class="car-des-t">车辆使用费：<text>110</text></view>
+                                <view class="car-des-t">京牌使用费：<text>111</text></view>
+                                <view class="car-des-t">保障服务费：<text>111</text></view>
+                                <view class="car-des-t">车辆押金费：<text>111</text></view>
+                                <view class="car-des-t">车辆使用费：<text>111</text></view>
+                                <view class="car-des-t">合约期满后：<text>111</text></view>
+                            </view>
+                        </view>
+                    </template>
+                    <template v-if="current == 1">
+                        <view class="card">
+                            <view class="car-mode-info u-border-bottom">
+                                <u-image class="car-brand-logo" width="88rpx" height="88rpx"  src="/static/brand.png"></u-image>
+                                <view class="mode-info-head">
+                                    <view class="u-flex u-row-between">
+                                        <view class="mode-info-brand u-flex-2">奔驰 AMG 2021款 45TFSI 臻选致雅</view>
+                                        <view class="u-flex-2 price-base u-text-right"><text>9,900</text>/月</view>
                                     </view>
-                                    <view class="u-flex-1 divider-x">
-                                        <view>3.38万</view>
-                                        <view>购置税</view>
-                                    </view>
-                                    <view class="u-flex-1 divider-x">
-                                        <view>6个月</view>
-                                        <view>最小合约期</view>
+                                    <view class="mode-info-p u-flex">
+                                        <view class="u-flex-1 divider-x">
+                                            <view>44.38万</view>
+                                            <view>指导价</view>
+                                        </view>
+                                        <view class="u-flex-1 divider-x">
+                                            <view>3.38万</view>
+                                            <view>购置税</view>
+                                        </view>
                                     </view>
                                 </view>
                             </view>
                         </view>
-                        <view class="car-des">
-                            <view class="car-des-t">交车周期：<text>全新车交车周期预计30天内</text></view>
-                            <view class="car-des-t">付款方式：<text>111</text></view>
-                            <view class="car-des-t">车辆使用费：<text>110</text></view>
-                            <view class="car-des-t">京牌使用费：<text>111</text></view>
-                            <view class="car-des-t">保障服务费：<text>111</text></view>
-                            <view class="car-des-t">车辆押金费：<text>111</text></view>
-                            <view class="car-des-t">车辆使用费：<text>111</text></view>
-                            <view class="car-des-t">合约期满后：<text>111</text></view>
-                            
-                        </view>
-                    </view>
+                        
+                    </template>
+                    <template v-if="current == 2">
+                        平价租车
+                    </template>
+                    <template v-if="current == 3">
+                        折扣新车
+                    </template>
+                    <template v-if="current == 4">
+                        认证好车
+                    </template>
+                    
                 </view>
             </view>
         </view>
@@ -145,6 +187,18 @@ export default {
                         font-size: 44rpx;
                         color: #0A0F2D;
                         font-weight: 600;
+                    }
+                    .brand-price {
+                        background: url('/static/icon3.png') no-repeat;
+                        background-size: 100%; 
+                    }
+                }
+                .car-info-icon {
+                    margin-right: -30rpx;
+                    .icon {
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin: 0 20rpx;
                     }
                 }
             }
