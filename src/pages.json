@@ -5,23 +5,9 @@
 
 	"pages": [ 
 		{
-			"path": "pages/selection/index",
+			"path": "pages/home/index",
 			"style": {
-				"navigationBarTitleText": "",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/profile/index",
-			"style": {
-				"navigationBarTitleText": "",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/selection/search/menu",
-			"style": {
-				"navigationBarTitleText": "条件选车"
+				"navigationBarTitleText": "home"
 			}
 		},
 		{
@@ -38,30 +24,5 @@
 		"backgroundColor": "#F8F8F8",
 		"rpxCalcBaseDeviceWidth": 375, 
     	"rpxCalcIncludeWidth": 375 
-	},
-	"condition": {
-		"current": 0,
-		"list": [
-			{
-				"name": "首页", 
-				"path": "pages/selection/index",
-				"query": "" 
-			},
-			{
-				"name": "登陆", 
-				"path": "pages/login",
-				"query": "" 
-			},
-			{
-				"name": "详情", 
-				"path": "pages/profile/index",
-				"query": "" 
-			},
-			{
-				"name": "筛选", 
-				"path": "pages/selection/search/menu",
-				"query": "" 
-			}
-		]
 	}
 }
